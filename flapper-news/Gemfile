@@ -16,6 +16,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # handle templates in angular
 gem 'angular-rails-templates'
 
+gem 'responders', '~> 2.0'
+
+gem 'angular_rails_csrf'
+
 
 
 # Use ActiveModel has_secure_password
