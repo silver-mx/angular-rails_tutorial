@@ -16,9 +16,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # handle templates in angular
 gem 'angular-rails-templates'
 
+# JSON responser
 gem 'responders', '~> 2.0'
 
+# Cross site request forgery
 gem 'angular_rails_csrf'
+
+#Authentication
+gem 'devise', '~> 3.4.0'
 
 
 
