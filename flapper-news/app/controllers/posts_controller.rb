@@ -1,28 +1,30 @@
 class PostsController < ApplicationController
 
-	def index
-		respond_with Post.all
-	end
+  before_filter :authenticate_user!, only: [:create, :upvote]
 
-	def create
-		respond_with Post.create(post_params)
-	end
+  def index
+    respond_with Post.all
+  end
 
-	def show
-		respond_with Post.find(params[:id])
-	end
+  def create
+    respond_with Post.create(post_params.merge(user_id: current_user.id))
+  end
 
-	def upvote
-		post = Post.find(params[:id])
-		post.increment!(:upvotes)
+  def show
+    respond_with Post.find(params[:id])
+  end
 
-		respond_with post
-	end
+  def upvote
+    post = Post.find(params[:id])
+    post.increment!(:upvotes)
 
-	private
+    respond_with post
+  end
 
-	def post_params
-		params.require(:post).permit(:link, :title) 
-	end 
+  private
+
+  def post_params
+    params.require(:post).permit(:link, :title)
+  end
 
 end
